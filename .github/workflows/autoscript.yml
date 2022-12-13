@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: echo
-      - run: echo ${GITHUB_ACTOR}
+        run: echo ${GITHUB_ACTOR}
   copy-issues:
     if: contains('${GITHUB_ACTOR}', 'classroom')
     name: CopyIssues
