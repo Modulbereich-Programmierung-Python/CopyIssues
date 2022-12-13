@@ -1,7 +1,6 @@
 name: Copy Issues from another repository
 
-on:
-  on: [push]
+on: [push]
 
 env:
   DEVOPS_DIR: devops
