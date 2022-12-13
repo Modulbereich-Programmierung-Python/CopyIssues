@@ -1,7 +1,7 @@
 Scripts to copy issues from a source repository to a target repository.
 
 I made this script and the workflows to work with GitHub Classrooms. When the user accepts an assignment, he get's a copy of the repo without the issues.
-So far the workflows work only if the source repository is //public//.
+So far the workflows work only if the source repository is *public*.
 
 **Stand alone**
 
