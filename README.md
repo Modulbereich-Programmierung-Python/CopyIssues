@@ -17,7 +17,7 @@ In '/.github/workflows/copyissues.yml' you find the manual GitHub workflow.
 
 **GitHub automatic workflow**
 
-In '/.github/workflows/copyissues.yml' you find the automatic GitHub workflow.
+In '/.github/workflows/autoscript.yml' you find the automatic GitHub workflow.
 This workflow is executed when the classroom-bot creates the repo for an accepted assignment.
 - Copy this workflow to the template repository
 - Create an assignment with this template
