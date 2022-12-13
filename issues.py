@@ -7,7 +7,8 @@ github_secret = os.environ['GHSECRET']
 from_repo_name = os.environ['SOURCE_REPO']
 to_repo_name = os.environ['TARGET_REPO']
 
-print(to_repo_name)
+print('From: ' + from_repo_name)
+print('To:   ' + to_repo_name)
 
 
 def main():
