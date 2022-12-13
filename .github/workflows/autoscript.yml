@@ -1,4 +1,4 @@
-name: Copy Issues from another repository
+name: auto copy Issues from another repository
 
 on: [push]
 
