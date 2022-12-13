@@ -1,9 +1,19 @@
-Einfaches Skript um die Issues von einem Repo in ein anderes Repo zu kopieren.
+Scripts to copy issues from one repository to a target repository.
 
-**Einstellungen:**
-- token: Dein persönliches Access Token
-- source_repo: Aus diesem Repository werden die Issues kopiert
-- target_repo: In diesem Repository werden die Issues erstellt
+**Stand alone**
 
-**Hinweise:**
-- Der Befehl ''time.sleep(n)'' verhindert, dass zuviele Requests in kurzer Zeit gemacht werden. Andernfalls wird GitHub einen Fehler ausgeben.
+The python file can be run directly with the settings in .env
+
+**GitHub workflow**
+
+In '/.github/workflows/copyissues.yml' you find a GitHub workflow. 
+- Copy this workflow to the target repository
+- Change the ''SOURCE_REPO'' to a public repo with the issues you want to copy
+
+**Settings:**
+- GHSECRET: personal access token
+- SOURCE_REPO: the source repository 
+- TARGET_REPO: the target repository
+
+**Remarks:**
+- The 'time.sleep(n)' avoids too many requests in too short a time. Otherwise GitHub would abort with an error.
