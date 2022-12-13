@@ -1,0 +1,30 @@
+name: Copy Issues from another repository
+
+on:
+  on: [push]
+
+env:
+  DEVOPS_DIR: devops
+  GHSECRET: ${{ secrets.GITHUB_TOKEN }}
+  TARGET_REPO: ${{ github.repository }}
+  SOURCE_REPO: Modulbereich-Programmierung-Python/CopyIssues
+  SCRIPT_REPO: Modulbereich-Programmierung-Python/CopyIssues
+
+jobs:
+  copy-issues:
+    name: CopyIssues
+    runs-on: ubuntu-latest
+    steps:
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pyGithub
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    - name: Check-out the IssueCopy Repo
+      uses: actions/checkout@v2
+      with:
+        repository: ${{ env.SCRIPT_REPO }}
+        path: ${{ env.DEVOPS_DIR }}
+    - name: Copy the Issues
+      run: python ${{ env.DEVOPS_DIR }}/foobar.py
+      shell: sh
