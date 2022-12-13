@@ -1,0 +1,29 @@
+name: Copy Issues from another repository
+
+on:
+  workflow_dispatch:
+
+env:
+  DEVOPS_DIR: devops
+  GHSECRET: ${{ secrets.GITHUB_TOKEN }}
+  TARGET_REPO: ${{ github.repository }}
+  SOURCE_REPO: graphics80/IssueCopy
+
+jobs:
+  copy-issues:
+    name: CopyIssues
+    runs-on: ubuntu-latest
+    steps:
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pyGithub
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    - name: Check-out the IssueCopy Repo
+      uses: actions/checkout@v2
+      with:
+        repository: ${{ env.SOURCE_REPO }}
+        path: ${{ env.DEVOPS_DIR }}
+    - name: Copy the Issues
+      run: python ${{ env.DEVOPS_DIR }}/issues.py
+      shell: sh
