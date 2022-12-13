@@ -2,12 +2,18 @@ name: Copy Issues from another repository
 
 on:
   workflow_dispatch:
+    inputs:
+      source_repo:
+        type: string
+        description: 'The repo to copy the issues from'
+        required: true 
 
 env:
   DEVOPS_DIR: devops
   GHSECRET: ${{ secrets.GITHUB_TOKEN }}
   TARGET_REPO: ${{ github.repository }}
-  SOURCE_REPO: graphics80/IssueCopy
+  SOURCE_REPO: ${{ inputs.source_repo }}
+  SCRIPT_REPO: Modulbereich-Programmierung-Python/CopyIssues
 
 jobs:
   copy-issues:
@@ -22,7 +28,7 @@ jobs:
     - name: Check-out the IssueCopy Repo
       uses: actions/checkout@v2
       with:
-        repository: ${{ env.SOURCE_REPO }}
+        repository: ${{ env.SCRIPT_REPO }}
         path: ${{ env.DEVOPS_DIR }}
     - name: Copy the Issues
       run: python ${{ env.DEVOPS_DIR }}/issues.py
