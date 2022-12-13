@@ -10,6 +10,12 @@ env:
   SCRIPT_REPO: Modulbereich-Programmierung-Python/CopyIssues
 
 jobs:
+  show-actor:
+    name: show-actor
+    runs-on: ubuntu-latest
+    steps:
+      - name: echo
+      - run: echo ${GITHUB_ACTOR}
   copy-issues:
     if: contains('${GITHUB_ACTOR}', 'classroom')
     name: CopyIssues
