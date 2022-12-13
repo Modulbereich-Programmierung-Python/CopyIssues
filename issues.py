@@ -4,9 +4,9 @@ from github import Github
 
 
 def main():
-    token = Github('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')
-    source_repo = token.get_repo('bzz-fgict/LU12_A03_Lottery')
-    target_repo = token.get_repo('bzz-fgict/gruppenaufgabe-m319_lu12_a03_lottery-test')
+    token = Github('YOURSECRET') # FIXME
+    source_repo = token.get_repo('bzz-fgict/SOURCE') # FIXME
+    target_repo = token.get_repo('bzz-fgict/TARGET') # FIXME
     source_issues = source_repo.get_issues(state='open', sort='created', direction='asc')
     target_issues = target_repo.get_issues(state='open', sort='created', direction='asc')
     for issue in source_issues:
@@ -16,7 +16,7 @@ def main():
                 issue.body
             )
             print(issue.title)
-            time.sleep(1)
+            time.sleep(5)
 
 
 def issue_exists(target_issues, title):
@@ -24,3 +24,7 @@ def issue_exists(target_issues, title):
         if issue.title == title:
             return True
     return False
+
+
+if __name__ == '__main__':
+    main()
