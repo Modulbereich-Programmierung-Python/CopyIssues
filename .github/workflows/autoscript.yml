@@ -17,9 +17,20 @@ jobs:
       - name: echo
         run: echo ${GITHUB_ACTOR}
   copy-issues:
-    if: ${{ contains(github.actor, 'marcel') }}
+    if: ${{ contains(github.actor, 'classroom') }}
     name: CopyIssues
     runs-on: ubuntu-latest
     steps:
-    - name: echo2
-      run: echo "success"
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install pyGithub
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    - name: Check-out the IssueCopy Repo
+      uses: actions/checkout@v2
+      with:
+        repository: ${{ env.SCRIPT_REPO }}
+        path: ${{ env.DEVOPS_DIR }}
+    - name: Copy the Issues
+      run: python ${{ env.DEVOPS_DIR }}/issues.py
+      shell: sh
