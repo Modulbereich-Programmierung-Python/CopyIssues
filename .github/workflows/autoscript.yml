@@ -11,6 +11,7 @@ env:
 
 jobs:
   copy-issues:
+    if: contains('${GITHUB_ACTOR}', 'classroom')
     name: CopyIssues
     runs-on: ubuntu-latest
     steps:
