@@ -4,8 +4,8 @@ import os
 from github import Github
 
 github_secret = os.environ['GHSECRET']
-issue_repo = os.environ['ISSUEREPO']
-this_repo = os.environ['REPO']
+from_repo_name = os.environ['SOURCE_REPO']
+to_repo_name = os.environ['TARGET_REPO']
 
 print(this_repo)
 
@@ -13,8 +13,8 @@ print(this_repo)
 def main():
 
     token = Github(github_secret)
-    source_repo = token.get_repo(issue_repo)
-    target_repo = token.get_repo(this_repo)
+    source_repo = token.get_repo(from_repo_name)
+    target_repo = token.get_repo(to_repo_name)
     source_issues = source_repo.get_issues(state='open', sort='created', direction='asc')
     target_issues = target_repo.get_issues(state='open', sort='created', direction='asc')
     for issue in source_issues:
